@@ -1,7 +1,7 @@
-import { analyzeVideos } from 'analysis.js';
-import { runTranscriptionIfEnabled } from 'asr.js';
-import { exportCompilation } from 'export.js';
-import { formatSeconds } from 'utils.js';
+import { analyzeVideos } from './analysis.js';
+import { runTranscriptionIfEnabled } from './asr.js';
+import { exportCompilation } from './export.js';
+import { formatSeconds } from './utils.js';
 
 const state = {
   videoFiles: [],
