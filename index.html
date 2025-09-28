@@ -1,1 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All-in-One So Video Maker (Client-side)</title>
+    <link rel="stylesheet" href="/workspace/styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <h1>All‑in‑One So Video Maker</h1>
+      <div class="header-actions">
+        <label class="toggle">
+          <input id="enable-asr" type="checkbox" />
+          <span>Enable Captions (Whisper tiny)</span>
+        </label>
+        <button id="analyze-btn" class="primary">Analyze</button>
+        <button id="export-btn" class="success" disabled>Export Compilation</button>
+      </div>
+    </header>
+
+    <main class="app-main">
+      <aside class="sidebar">
+        <section class="card">
+          <h2>1. Upload Videos</h2>
+          <input id="video-input" type="file" accept="video/*" multiple />
+          <div id="video-list" class="file-list"></div>
+        </section>
+
+        <section class="card">
+          <h2>2. Music (Optional)</h2>
+          <input id="music-input" type="file" accept="audio/*" />
+          <div class="field">
+            <label for="music-gain">Music Volume</label>
+            <input id="music-gain" type="range" min="0" max="1" step="0.01" value="0.25" />
+          </div>
+        </section>
+
+        <section class="card">
+          <h2>3. Clip Settings</h2>
+          <div class="field">
+            <label for="min-len">Min Length (s)</label>
+            <input id="min-len" type="number" min="2" max="60" value="6" />
+          </div>
+          <div class="field">
+            <label for="max-len">Max Length (s)</label>
+            <input id="max-len" type="number" min="3" max="120" value="20" />
+          </div>
+          <div class="field">
+            <label for="num-clips">Max Clips</label>
+            <input id="num-clips" type="number" min="1" max="50" value="8" />
+          </div>
+          <div class="field">
+            <label for="aspect">Aspect Ratio</label>
+            <select id="aspect">
+              <option value="16:9" selected>16:9</option>
+              <option value="9:16">9:16</option>
+              <option value="1:1">1:1</option>
+            </select>
+          </div>
+          <div class="field">
+            <label class="toggle">
+              <input id="show-safe" type="checkbox" checked />
+              <span>Show Safe-Area Guides</span>
+            </label>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2>4. Captions</h2>
+          <div class="field">
+            <label for="caption-size">Font Size</label>
+            <input id="caption-size" type="range" min="14" max="64" value="28" />
+          </div>
+          <div class="field">
+            <label for="caption-bg">Background Opacity</label>
+            <input id="caption-bg" type="range" min="0" max="1" step="0.05" value="0.4" />
+          </div>
+        </section>
+      </aside>
+
+      <section class="studio">
+        <div class="preview-wrap">
+          <canvas id="preview-canvas"></canvas>
+          <div id="progress" class="progress"></div>
+        </div>
+        <div class="clips">
+          <h2>Suggested Clips</h2>
+          <div id="clip-list" class="clip-list"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <span id="status">Idle</span>
+      <a href="https://huggingface.co/Xenova/whisper-tiny.en" target="_blank" rel="noreferrer">Model</a>
+    </footer>
+
+    <script type="module" src="/workspace/src/app.js"></script>
+  </body>
+  </html>
+
 
